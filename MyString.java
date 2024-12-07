@@ -8,6 +8,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'e'));
         System.out.println(spacedString(hello));
+        System.out.println(subsetOf("dan", "danalonmika"));
         //// Put your other tests here.
     }
 
@@ -67,8 +68,8 @@ public class MyString {
             char charToCheck = ifExist.charAt(i);
             int numberOfTimesIfExist = countChar(ifExist, charToCheck);
             int numberOfTimesBaseString = countChar(baseString, charToCheck);
-            
-            if (numberOfTimesBaseString != numberOfTimesIfExist) {
+
+            if (numberOfTimesBaseString < numberOfTimesIfExist) {
                 return false;
                 
             }

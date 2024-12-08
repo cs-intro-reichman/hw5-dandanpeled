@@ -140,7 +140,7 @@ public class Scrabble {
 					int currentWordScore = wordScore(input);
 
 					score += currentWordScore;
-					System.out.println(input + " earned " + currentWordScore + " points. Score: " + score + " points");
+					System.out.println(input + " earned " + currentWordScore + " points. Score: " + score + " points\n");
 
 					//Create the next hand
 					hand = MyString.remove(hand, input);

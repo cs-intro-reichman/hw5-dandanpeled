@@ -52,7 +52,7 @@ public class Scrabble {
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
 		//Setting variables
-		String checkWord = word.toLowerCase();
+		String checkWord = word;
 
 		if (checkWord == ""){
 			return false;
@@ -80,10 +80,16 @@ public class Scrabble {
 			int alphabetIndex = asciiNum - 97;
 
 			score += SCRABBLE_LETTER_VALUES[alphabetIndex];
+		}
 
-			if (charToCheck == 'r' && wordToCheck.charAt(i+1) == 'u' && wordToCheck.charAt(i+2) == 'n' && wordToCheck.charAt(i+3) == 'i'){
-				score += 1000;
-			}
+		score = score * word.length();
+
+		if (wordToCheck.length() == HAND_SIZE){
+			score += 50;
+		}
+
+		if (MyString.subsetOf("runi", wordToCheck)){
+			score += 1000;
 		}
 
 		return score;
@@ -102,7 +108,7 @@ public class Scrabble {
 
 		//Add 'a' and 'e' at random places
 		finalHand = MyString.insertRandomly('a', randomCharString);
-		finalHand = MyString.insertRandomly('e', randomCharString);
+		finalHand = MyString.insertRandomly('e', finalHand);
 		
 		return finalHand;
 	}
@@ -131,10 +137,8 @@ public class Scrabble {
 				//Check the validity of the word (subsetOf + in dictionary)
 				if(isWordInDictionary(input) && MyString.subsetOf(input, hand)){
 					// Calculate the score 
-					int currentWordScore = wordScore(input) * input.length();
-					if (input.length() == n) {
-						currentWordScore += 50;
-					}
+					int currentWordScore = wordScore(input);
+
 					score += currentWordScore;
 					System.out.println(input + " earned " + currentWordScore + " points. Score: " + score + " points");
 
@@ -185,9 +189,9 @@ public class Scrabble {
 		//// Uncomment the test you want to run
 		////testBuildingTheDictionary();  
 		//testScrabbleScore();    
-		////testCreateHands();  
+		testCreateHands();  
 		///testPlayHands();
-		playGame();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {

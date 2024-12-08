@@ -9,7 +9,10 @@ public class MyString {
         System.out.println(countChar(hello, 'e'));
         System.out.println(spacedString(hello));
         System.out.println(subsetOf("dan", "danalonmika"));
+
         //// Put your other tests here.
+        System.out.println(insertRandomly('a', hello)); 
+        
     }
 
     /**
@@ -124,7 +127,7 @@ public class MyString {
         int numOfChars = n;
         String newString = "";
 
-        for (int i = 0; i < numOfChars - 1; i++){
+        for (int i = 0; i < numOfChars; i++){
             int randomAscii = (int) (97 + Math.random() * (122 - 97 + 1));
             char randomChar = (char)(randomAscii);
             newString += randomChar;
